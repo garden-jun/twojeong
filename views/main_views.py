@@ -6,4 +6,4 @@ bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별�
 
 @bp.route('/')
 def hello_pybo():
-    return 'Hello, Pybo!'
+    return 'Pybo index'
