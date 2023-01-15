@@ -28,7 +28,7 @@ def create_app():
     """
 
     # 블루프린트
-    from .views import main_views
+    from views import main_views
     app.register_blueprint(main_views.bp)   # main_views.bp 파일에 있는 블루프린트 객체 bp를 등록
 
     return app
