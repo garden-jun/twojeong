@@ -2,7 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-import config
+# import config
 
 # 전역변수로 db, migrate 객체를 생성
 db = SQLAlchemy()
@@ -12,7 +12,7 @@ migrate = Migrate()
 def create_app():
     # app.py 라는 모듈이 실행되므로 __name__ 변수에는 pybo라는 문자열이 담긴다.
     app = Flask(__name__)
-    app.config.from_object(config)  # config.py에 작성된 항목을 읽음
+    app.config.from_envvar('APP_CONFIG_FILE')  # "환경 변수 APP_CONFIG_FILE에 정의된 파일을 환경 파일로 사용하겠다"는 의미이다.
 
     # ORM
     db.init_app(app)    # db를 app에 등록
