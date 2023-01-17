@@ -1,4 +1,5 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
+
 
 # bp객체 생성 #__name__은 모듈명인 main_views가 전달된다.
 bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별칭"
@@ -6,4 +7,4 @@ bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별�
 
 @bp.route('/')
 def hello_pybo():
-    return 'Pybo index'
+    return render_template('static/main.html')
