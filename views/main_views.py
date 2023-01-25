@@ -5,6 +5,8 @@ from flask import Blueprint, render_template
 bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별칭"
                                                     #url_prefix는 라우팅함수의 애너테이션 URL앞에 기본으로 붙일 접두어 URL을 의미한다.
 
-@bp.route('/')
+@bp.route('/', methods = ['GET', 'POST'])
 def hello_pybo():
+    if request.method == 'GET':
+        #MySQL 서버에 접속하기
     return render_template('main.html')
