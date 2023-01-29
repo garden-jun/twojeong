@@ -17,6 +17,7 @@ def create_app():
     # ORM
     db.init_app(app)    # db를 app에 등록
     migrate.init_app(app, db)   # migrate를 app에 등록
+    import models
 
     """
     blueprint 생성 이전 사용한 라우팅 함수

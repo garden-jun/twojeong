@@ -7,6 +7,5 @@ bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별�
 
 @bp.route('/', methods = ['GET', 'POST'])
 def hello_pybo():
-    if request.method == 'GET':
-        #MySQL 서버에 접속하기
+
     return render_template('main.html')
