@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from models import USER
 from flask import request
+from http import HTTPStatus
 
 # bp객체 생성 #__name__은 모듈명인 main_views가 전달된다.
 bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별칭"
@@ -12,7 +13,7 @@ def hello_pybo():
     user = USER.query()
     return render_template('main.html', USER = USER)
 
-@bp.route('/2', methods = ['GET', 'POST'])
+@bp.route('/2', methods = ['GET'])
 def hello_pybo2():
     ret = {"count": 2,
            "students": [
@@ -21,3 +22,20 @@ def hello_pybo2():
            ]
            }
     return ret
+
+@bp.route('/3', methods = ['POST'])
+def hello_pybo3():
+    data = request.get_json()  # 클라이언트로부터 json형식으로 데이터를 받는다.
+    # data = { "x" : 345, "y" : 827 }     포스트맨에서 바디부분에 연결
+
+    if 'x' not in data or 'y' not in data:
+        return {'message': '파라미터 오류'}, HTTPStatus.BAD_REQUEST
+
+    x = data['x']  # 파이썬 딕셔너리 형태에서 데이터 억세스 방법
+    y = data['y']
+
+    z = x + y
+
+    ret = {'sum': z}  # 딕셔너리 형태로 돌려준다.
+
+    return ret, HTTPStatus.UNAUTHORIZED
