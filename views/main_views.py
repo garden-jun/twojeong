@@ -14,6 +14,6 @@ def hello_pybo():
 
 @bp.route('/2', methods = ['GET', 'POST'])
 def hello_pybo2():
-    temp = request.args.get(1, "abc")
+    temp = request.args.get("id", "abc")
     temp2 = request.args.get(2, "abcd")
     return temp + "-"+temp2
