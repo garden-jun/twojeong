@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
-
+from models import USER
+from flask import request
 
 # bp객체 생성 #__name__은 모듈명인 main_views가 전달된다.
 bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별칭"
@@ -8,4 +9,11 @@ bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별�
 @bp.route('/', methods = ['GET', 'POST'])
 def hello_pybo():
 
-    return render_template('main.html')
+    user = USER.query()
+    return render_template('main.html', USER = USER)
+
+@bp.route('/2', methods = ['GET', 'POST'])
+def hello_pybo2():
+    temp = request.args.get(1, "abc")
+    temp2 = request.args.get(2, "abcd")
+    return temp + "-"+temp2
