@@ -48,9 +48,14 @@ def team_register():
         title=tm['title'],
         target_personnel=tm['target_personnel']
     )
-    return team
+    db.session.add(team)
+    db.session.commit()
+    flash('Team DB is saved')
+
+    return 0
 
 @bp.route('/view/<int:team_id>')
 def team_view():
-    tm = Team.query.get(team_id)
+    tm = Team.query.filter(Team.id == team_id).all()
+    flash(tm)
     return tm
