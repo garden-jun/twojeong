@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 # import config
 
@@ -12,6 +13,7 @@ migrate = Migrate()
 def create_app():
     # app.py 라는 모듈이 실행되므로 __name__ 변수에는 pybo라는 문자열이 담긴다.
     app = Flask(__name__)
+    CORS(app)
     app.config.from_envvar('APP_CONFIG_FILE')  # "환경 변수 APP_CONFIG_FILE에 정의된 파일을 환경 파일로 사용하겠다"는 의미이다.
 
     # ORM

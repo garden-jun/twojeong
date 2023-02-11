@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from models import USER
+from models import *
 from flask import request
 from http import HTTPStatus
 
@@ -10,8 +10,8 @@ bp = Blueprint('main', __name__, url_prefix='/')    #main은 blueprint의 "별�
 @bp.route('/', methods = ['GET', 'POST'])
 def hello_pybo():
 
-    user = USER.query()
-    return render_template('main.html', USER = USER)
+    return main_page
+    # return render_template('main.html', USER = USER)
 
 @bp.route('/2', methods = ['GET'])
 def hello_pybo2():
@@ -25,6 +25,7 @@ def hello_pybo2():
 
 @bp.route('/3', methods = ['POST'])
 def hello_pybo3():
+    print(request.is_json)
     data = request.get_json()  # 클라이언트로부터 json형식으로 데이터를 받는다.
     # data = { "x" : 345, "y" : 827 }     포스트맨에서 바디부분에 연결
 
@@ -38,4 +39,4 @@ def hello_pybo3():
 
     ret = {'sum': z}  # 딕셔너리 형태로 돌려준다.
 
-    return ret, HTTPStatus.UNAUTHORIZED
+    return ret
