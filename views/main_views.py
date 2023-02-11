@@ -41,16 +41,16 @@ def hello_pybo3():
 
     return ret
 
-@bp.route('/regi/<int:question_id>', methods=('POST'))
-def Team_register():
-    teamMemberrequest.get_json()
-    # tm = TeamMember(
-    #     id=db.Column(db.Integer, primary_key=True)
-    #     title = db.Column(db.String(100))
-    #     target_personnel = db.Column(db.Integer)
-    # )
-    return
+@bp.route('/regi/<int:team_id>', methods=('POST'))
+def team_register():
+    tm = request.get_json()
+    team = Team(
+        title=tm['title'],
+        target_personnel=tm['target_personnel']
+    )
+    return team
 
 @bp.route('/view/<int:team_id>')
-def Team_view():
-    tm = TeamMember.query.get(team)
+def team_view():
+    tm = Team.query.get(team_id)
+    return tm
