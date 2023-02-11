@@ -14,3 +14,4 @@ class TeamMember(db.Model):
     detail = db.Column(db.String(10000))
     scrap = db.Column(db.Integer)
     area = db.Column(db.String(100))
+    hash = db.Column(db.String(100))

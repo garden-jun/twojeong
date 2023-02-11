@@ -40,3 +40,5 @@ def hello_pybo3():
     ret = {'sum': z}  # 딕셔너리 형태로 돌려준다.
 
     return ret
+
+@bp.route('/')
