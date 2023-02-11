@@ -4,7 +4,7 @@ class USER(db.Model):
     userID = db.Column(db.String(200), nullable=False)
 
 
-class TeamMember(db.Model):
+class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     current_personnel = db.Column(db.Integer)
