@@ -23,6 +23,7 @@ def hello_pybo2():
            }
     return ret
 
+
 @bp.route('/3', methods = ['POST'])
 def hello_pybo3():
     print(request.is_json)
@@ -41,7 +42,8 @@ def hello_pybo3():
 
     return ret
 
-@bp.route('/regi/<int:team_id>', methods=('POST'))
+
+@bp.route('/regi/<int:team_id>', methods=['POST'])
 def team_register():
     tm = request.get_json()
     team = Team(
@@ -54,7 +56,7 @@ def team_register():
 
     return 0
 
-@bp.route('/view/<int:team_id>')
+@bp.route('/view/<int:team_id>', methods=['GET'])
 def team_view():
     tm = Team.query.filter(Team.id == team_id).all()
     flash(tm)
